@@ -30,7 +30,7 @@ class Program
                 {
                     var input = Console.ReadLine();
                     var parts = input.Split(' ');
-                    if (parts.Length == 2 && int.TryParse(parts[0], out int maxHo) && int.TryParse(parts[1], out int minHo))
+                    if (parts.Length == 2 && int.TryParse(parts[0], out int minHo) && int.TryParse(parts[1], out int maxHo))
                     {
                         return new { Index = index, Idojaras = new Idojaras(maxHo, minHo) };
                     }
@@ -44,7 +44,7 @@ class Program
 
         //1 feladat
         Console.WriteLine("#");
-        Console.WriteLine($"{idojarasAdatok.Count(x => x.Value.MinHo < 0)}");
+        Console.WriteLine($"{idojarasAdatok.Count(x => x.Value.MinHo <= 0)}");
 
         //2 feladat
         Console.WriteLine("#");
@@ -56,6 +56,7 @@ class Program
 
         //4 feladat
         Console.WriteLine("#");
-        Console.WriteLine(string.Join(" ", idojarasAdatok.Where(x => x.Value.MinHo < 0 && x.Value.MaxHo > 0).Select(x => x.Key).OrderBy(x => x).ToList()));
+        List<int> FagyasOlvadas(Dictionary<int, Idojaras> input) => input.Where(x => x.Value.MinHo <= 0 && x.Value.MaxHo > 0).Select(x => x.Key).OrderBy(x => x).ToList();
+        Console.WriteLine(string.Join(" ", FagyasOlvadas(idojarasAdatok).Count, string.Join(" ", FagyasOlvadas(idojarasAdatok))));
     }
 }
