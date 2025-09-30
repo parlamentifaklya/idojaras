@@ -36,7 +36,7 @@ class Program
                     }
                     else
                     {
-                        throw new Exception("Hibás formátum! Adja meg újra (maxHo minHo):");
+                        Console.WriteLine("Hibás formátum! Adja meg újra (maxHo minHo):");
                     }
                 }
             })
