@@ -52,7 +52,7 @@ class Program
 
         //3 feladat
         Console.WriteLine("#");
-        int MaximumKisebb(Dictionary<int, Idojaras> input) => idojarasAdatok.Where(x => x.Key > 1).FirstOrDefault(x => idojarasAdatok[x.Key - 1].MinHo > x.Value.MaxHo).Key;
+        int MaximumKisebb(Dictionary<int, Idojaras> input) => input.Where(x => x.Key > 1).FirstOrDefault(x => input[x.Key - 1].MinHo > x.Value.MaxHo).Key;
         Console.WriteLine($"{(MaximumKisebb(idojarasAdatok) == 0 ? -1 : MaximumKisebb(idojarasAdatok))}");
 
         //4 feladat
